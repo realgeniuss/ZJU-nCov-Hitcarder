@@ -171,17 +171,17 @@
     <li>
         <div name="campus" class="radio"><span>所在校区 Campus<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div @click="info.campus=1"><span :class="{active: info.campus==1}"><i></i></span> <span>紫金港校区</span></div>
-                <div @click="info.campus=2"><span :class="{active: info.campus==2}"><i></i></span> <span>玉泉校区</span></div>
-                <div @click="info.campus=3"><span :class="{active: info.campus==3}"><i></i></span> <span>西溪校区</span></div>
-                <div @click="info.campus=4"><span :class="{active: info.campus==4}"><i></i></span> <span>华家池校区</span></div>
-                <div @click="info.campus=5"><span :class="{active: info.campus==5}"><i></i></span> <span>之江校区</span></div>
-                <div @click="info.campus=6"><span :class="{active: info.campus==6}"><i></i></span> <span>海宁校区</span></div>
-                <div @click="info.campus=7"><span :class="{active: info.campus==7}"><i></i></span> <span>舟山校区</span></div>
-                <div @click="info.campus=8"><span :class="{active: info.campus==8}"><i></i></span> <span>宁波校区</span></div>
-                <div @click="info.campus=9"><span :class="{active: info.campus==9}"><i></i></span> <span>工程师学院</span></div>
-                <div @click="info.campus=10"><span :class="{active: info.campus==10}"><i></i></span> <span>杭州国际科创中心</span></div>
-                <div @click="info.campus=11"><span :class="{active: info.campus==11}"><i></i></span> <span>其他</span></div>
+                <div @click="info.campus=2"><span :class="{active: info.campus==2}"><i></i></span> <span>紫金港校区</span></div>
+                <div @click="info.campus=3"><span :class="{active: info.campus==3}"><i></i></span> <span>玉泉校区</span></div>
+                <div @click="info.campus=4"><span :class="{active: info.campus==4}"><i></i></span> <span>西溪校区</span></div>
+                <div @click="info.campus=5"><span :class="{active: info.campus==5}"><i></i></span> <span>华家池校区</span></div>
+                <div @click="info.campus=6"><span :class="{active: info.campus==6}"><i></i></span> <span>之江校区</span></div>
+                <div @click="info.campus=7"><span :class="{active: info.campus==7}"><i></i></span> <span>海宁校区</span></div>
+                <div @click="info.campus=8"><span :class="{active: info.campus==8}"><i></i></span> <span>舟山校区</span></div>
+                <div @click="info.campus=9"><span :class="{active: info.campus==9}"><i></i></span> <span>宁波校区</span></div>
+                <div @click="info.campus=10"><span :class="{active: info.campus==10}"><i></i></span> <span>工程师学院</span></div>
+                <div @click="info.campus=11"><span :class="{active: info.campus==11}"><i></i></span> <span>杭州国际科创中心</span></div>
+                <div @click="info.campus=1"><span :class="{active: info.campus==1}"><i></i></span> <span>其他</span></div>
             </div>
         </div>
     </li>
