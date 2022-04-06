@@ -1,53 +1,78 @@
 <ul>
     <li>
-        <div class="text"><span>今日日期 Date<i class="icon iconfont icon-shuoming" style="display: none;"></i></span>
-            <input readonly="readonly" type="text" placeholder="">
+        <div class="text">
+            <span>今日日期 Date<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+            <input v-model="date" readonly type="text" placeholder="">
         </div>
     </li>
     <li>
-        <div class="text"><span>姓名 Name<i class="icon iconfont icon-shuoming" style="display: none;"></i></span> <input
-                readonly="readonly" type="text" placeholder=""></div>
+        <div class="text">
+            <span>姓名 Name<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+            <input v-model="realname" readonly type="text" placeholder="">
+        </div>
     </li>
     <li>
-        <div class="text"><span>学工号 Student/Staff ID No.<i class="icon iconfont icon-shuoming"
-                    style="display: none;"></i></span> <input readonly="readonly" type="text" placeholder=""></div>
+        <div class="text">
+            <span>学工号 Student/Staff ID No.<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+            <input v-model="number" readonly type="text" placeholder="">
+        </div>
     </li>
+
     <li>
         <div name="sfyxjzxgym" class="radio"><span>是否意向接种?<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class="active"><i></i></span> <span>是 Yes</span></div>
-                <div><span class=""><i></i></span> <span>否 No</span></div>
+                <div @click="info.sfyxjzxgym=1"><span :class="{active: info.sfyxjzxgym==1}"><i></i></span> <span>是
+                        Yes</span></div>
+                <div @click="info.sfyxjzxgym=0"><span
+                        :class="{active: (info.sfyxjzxgym===0 || info.sfyxjzxgym==='0')}"><i></i></span> <span>否
+                        No</span></div>
             </div>
         </div>
     </li>
     <li>
         <div name="sfbyjzrq" class="radio"><span>是否是不宜接种人群?<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>对疫苗成分过敏</span></div>
-                <div><span class=""><i></i></span> <span>患急性疾病者</span></div>
-                <div><span class=""><i></i></span> <span>处于慢性疾病的急性发作期者</span></div>
-                <div><span class=""><i></i></span> <span>妊娠期妇女</span></div>
-                <div><span class="active"><i></i></span> <span>否</span></div>
+                <div @click="info.sfbyjzrq=1"><span :class="{active: info.sfbyjzrq==1}"><i></i></span>
+                    <span>对疫苗成分过敏</span></div>
+                <div @click="info.sfbyjzrq=2"><span :class="{active: info.sfbyjzrq==2}"><i></i></span>
+                    <span>患急性疾病者</span></div>
+                <div @click="info.sfbyjzrq=3"><span :class="{active: info.sfbyjzrq==3}"><i></i></span>
+                    <span>处于慢性疾病的急性发作期者</span></div>
+                <div @click="info.sfbyjzrq=4"><span :class="{active: info.sfbyjzrq==4}"><i></i></span>
+                    <span>妊娠期妇女</span></div>
+                <div @click="info.sfbyjzrq=5"><span :class="{active: info.sfbyjzrq==5}"><i></i></span> <span>否</span>
+                </div>
             </div>
         </div>
     </li>
     <li>
         <div name="jzxgymqk" class="radio"><span>当前接种情况<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>已接种第一针</span></div>
-                <div><span class=""><i></i></span> <span>已接种第二针（已满6个月）</span></div>
-                <div><span class=""><i></i></span> <span>已接种第二针（未满6个月）</span></div>
-                <div><span class="active"><i></i></span> <span>已接种第三针</span></div>
-                <div><span class=""><i></i></span> <span>未接种</span></div>
+                <div @click="info.jzxgymqk=1"><span :class="{active: info.jzxgymqk==1}"><i></i></span>
+                    <span>已接种第一针</span></div>
+                <!--                                    <div @click="info.jzxgymqk=2"><span :class="{active: info.jzxgymqk==2}"><i></i></span> <span>已完成接种</span></div>-->
+                <div @click="info.jzxgymqk=4"><span :class="{active: info.jzxgymqk==4}"><i></i></span>
+                    <span>已接种第二针（已满6个月）</span></div>
+                <div @click="info.jzxgymqk=5"><span :class="{active: info.jzxgymqk==5}"><i></i></span>
+                    <span>已接种第二针（未满6个月）</span></div>
+                <div @click="info.jzxgymqk=6"><span :class="{active: info.jzxgymqk==6}"><i></i></span>
+                    <span>已接种第三针</span></div>
+                <div @click="info.jzxgymqk=3"><span :class="{active: info.jzxgymqk==3}"><i></i></span> <span>未接种</span>
+                </div>
             </div>
         </div>
     </li>
+
+
     <li>
         <div name="sffrqjwdg" class="radio"><span>今日是否因发热请假未到岗（教职工）或未返校（学生）？ Are you on leave due to fever?<i
                     class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>是 Yes</span></div>
-                <div><span class="active"><i></i></span> <span>否 No</span></div>
+                <div @click="info.sffrqjwdg=1"><span :class="{active: info.sffrqjwdg==1}"><i></i></span> <span>是
+                        Yes</span></div>
+                <div @click="info.sffrqjwdg=0"><span
+                        :class="{active: (info.sffrqjwdg===0 || info.sffrqjwdg==='0')}"><i></i></span> <span>否 No</span>
+                </div>
             </div>
         </div>
     </li>
@@ -55,67 +80,108 @@
         <div name="sfqtyyqjwdg" class="radio"><span>今日是否因发热外的其他原因请假未到岗（教职工）或未返校（学生）？ Are you on leave due to other
                 symptoms except fever?<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>是 Yes</span></div>
-                <div><span class="active"><i></i></span> <span>否 No</span></div>
+                <div @click="info.sfqtyyqjwdg=1"><span :class="{active: info.sfqtyyqjwdg==1}"><i></i></span> <span>是
+                        Yes</span></div>
+                <div @click="info.sfqtyyqjwdg=0"><span
+                        :class="{active: (info.sfqtyyqjwdg===0 || info.sfqtyyqjwdg==='0')}"><i></i></span> <span>否
+                        No</span></div>
             </div>
         </div>
     </li>
+
     <li>
         <div name="tw" class="radio"><span>今日是否有发热症状（高于37.2 ℃）？ Do you have a fever(above 37.2℃) today?<i
                     class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>是 Yes</span></div>
-                <div><span class="active"><i></i></span> <span>否 No</span></div>
+
+                <div @click="info.tw='1'"><span :class="{active: info.tw==='1'}"><i></i></span> <span>是 Yes</span></div>
+                <div @click="info.tw='0'"><span :class="{active: info.tw==='0'}"><i></i></span> <span>否 No</span></div>
             </div>
         </div>
     </li>
+
     <li>
         <div name="sfyqjzgc" class="radio"><span>今日是否被当地管理部门要求在集中隔离点医学观察？ Have you been isolated by the local
                 authorities at centralized isolation point for medical observation today?<i
                     class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>是 Yes</span></div>
-                <div><span class="active"><i></i></span> <span>否 No</span></div>
+                <div @click="info.sfyqjzgc=1"><span :class="{active: info.sfyqjzgc==1}"><i></i></span> <span>是
+                        Yes</span></div>
+                <div @click="info.sfyqjzgc=0"><span :class="{active: info.sfyqjzgc==0}"><i></i></span> <span>否 No</span>
+                </div>
             </div>
         </div>
     </li>
     <li>
-        <div name="sfcyglq" class="radio"><span>今日是否居家隔离观察（居家非隔离状态填否）? Have you been in self-isolation at home today
-                (select No if you are just stay at home but not isolated)?<i
+        <div name="sfcyglq" class="radio"><span @click="titlebtn()">今日是否居家隔离观察（居家非隔离状态填否）? Have you been in
+                self-isolation at home today (select No if you are just stay at home but not isolated)?<i
                     class="icon iconfont icon-shuoming"></i><em>（点击查看居家隔离观察定义 click to read the definition of
                     it）</em></span>
             <div>
-                <div><span class=""><i></i></span> <span>是 Yes</span></div>
-                <div><span class="active"><i></i></span> <span>否 No</span></div>
+                <div @click="info.sfcyglq=1"><span :class="{active: info.sfcyglq==1}"><i></i></span> <span>是 Yes</span>
+                </div>
+                <div @click="info.sfcyglq=0"><span :class="{active: info.sfcyglq==0}"><i></i></span> <span>否 No</span>
+                </div>
             </div>
         </div>
     </li>
-    <!---->
+
+    <!--                        <li v-if="info.sfcyglq==1">-->
+    <!--                            <div name="gllx" class="radio"><span>观察场所<i class="icon iconfont icon-shuoming"></i><em></em></span>-->
+    <!--                                <div>-->
+    <!--                                    <div @click="info.gllx='学校家属院'"><span :class="{active: info.gllx=='学校家属院'}"><i></i></span> <span>学校家属院</span></div>-->
+    <!--                                    <div @click="info.gllx='学校集中隔离点'"><span :class="{active: info.gllx=='学校集中隔离点'}"><i></i></span> <span>学校集中隔离点</span></div>-->
+    <!--                                    <div @click="info.gllx='杭州校外居住地'"><span :class="{active: info.gllx=='杭州校外居住地'}"><i></i></span> <span>杭州校外居住地</span></div>-->
+    <!--                                    <div @click="info.gllx='杭外地区集中隔离点'"><span :class="{active: info.gllx=='杭外地区集中隔离点'}"><i></i></span> <span>杭外地区集中隔离点</span></div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </li>-->
+    <li v-if="info.sfcyglq==1">
+        <div class="text">
+            <span>观察开始时间 The start time<i class="icon iconfont icon-shuoming"></i></span>
+            <input name="glksrq" v-model="info.glksrq" type="date" placeholder="">
+        </div>
+    </li>
+
+
+
+
     <li>
         <div name="sfcxzysx" class="radio"><span>是否有任何与疫情相关的，值得注意的情况？ Do you have any situation related to the epidemic
                 that deserves attention?<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>是 Yes</span></div>
-                <div><span class="active"><i></i></span> <span>否 No</span></div>
+                <div @click="info.sfcxzysx=1"><span :class="{active: info.sfcxzysx==1}"><i></i></span> <span>是
+                        Yes</span></div>
+                <div @click="info.sfcxzysx=0"><span :class="{active: info.sfcxzysx==0}"><i></i></span> <span>否 No</span>
+                </div>
             </div>
         </div>
     </li>
-    <!---->
-    <!---->
+    <li v-if="info.sfcxzysx==1">
+        <div class="multiText"><span>情况说明 Situation explanation<i class="icon iconfont icon-shuoming"></i></span>
+            <div><textarea v-model="info.qksm" name="qksm" rows="" cols="" placeholder=""></textarea></div>
+        </div>
+    </li>
+    <li v-if="info.sfcxzysx==1">
+        <div class="multiText"><span>其他信息 Other information<i style="display: none;"
+                    class="icon iconfont icon-shuoming"></i></span>
+            <div><textarea v-model="info.remark" name="remark" rows="" cols="" placeholder=""></textarea></div>
+        </div>
+    </li>
     <li>
         <div name="campus" class="radio"><span>所在校区 Campus<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class="active"><i></i></span> <span>紫金港校区</span></div>
-                <div><span class=""><i></i></span> <span>玉泉校区</span></div>
-                <div><span class=""><i></i></span> <span>西溪校区</span></div>
-                <div><span class=""><i></i></span> <span>华家池校区</span></div>
-                <div><span class=""><i></i></span> <span>之江校区</span></div>
-                <div><span class=""><i></i></span> <span>海宁校区</span></div>
-                <div><span class=""><i></i></span> <span>舟山校区</span></div>
-                <div><span class=""><i></i></span> <span>宁波校区</span></div>
-                <div><span class=""><i></i></span> <span>工程师学院</span></div>
-                <div><span class=""><i></i></span> <span>杭州国际科创中心</span></div>
-                <div><span class=""><i></i></span> <span>其他</span></div>
+                <div @click="info.sfbyjzrq=1"><span :class="{active: info.sfbyjzrq==1}"><i></i></span> <span>紫金港校区</span></div>
+                <div @click="info.sfbyjzrq=2"><span :class="{active: info.sfbyjzrq==2}"><i></i></span> <span>玉泉校区</span></div>
+                <div @click="info.sfbyjzrq=3"><span :class="{active: info.sfbyjzrq==3}"><i></i></span> <span>西溪校区</span></div>
+                <div @click="info.sfbyjzrq=4"><span :class="{active: info.sfbyjzrq==4}"><i></i></span> <span>华家池校区</span></div>
+                <div @click="info.sfbyjzrq=5"><span :class="{active: info.sfbyjzrq==5}"><i></i></span> <span>之江校区</span></div>
+                <div @click="info.sfbyjzrq=6"><span :class="{active: info.sfbyjzrq==6}"><i></i></span> <span>海宁校区</span></div>
+                <div @click="info.sfbyjzrq=7"><span :class="{active: info.sfbyjzrq==7}"><i></i></span> <span>舟山校区</span></div>
+                <div @click="info.sfbyjzrq=8"><span :class="{active: info.sfbyjzrq==8}"><i></i></span> <span>宁波校区</span></div>
+                <div @click="info.sfbyjzrq=9"><span :class="{active: info.sfbyjzrq==9}"><i></i></span> <span>工程师学院</span></div>
+                <div @click="info.sfbyjzrq=10"><span :class="{active: info.sfbyjzrq==10}"><i></i></span> <span>杭州国际科创中心</span></div>
+                <div @click="info.sfbyjzrq=11"><span :class="{active: info.sfbyjzrq==11}"><i></i></span> <span>其他</span></div>
             </div>
         </div>
     </li>
@@ -123,750 +189,304 @@
         <div name="sfsqhzjkk" class="radio"><span>是否已经申领校区所在地健康码？Have you got the health code of the city where the
                 campus is located？<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class="active"><i></i></span> <span>是 Yes</span></div>
-                <div><span class=""><i></i></span> <span>否 No</span></div>
+                <div @click="info.sfsqhzjkk='1'"><span :class="{active: info.sfsqhzjkk==='1'}"><i></i></span> <span>是
+                        Yes</span></div>
+                <div @click="info.sfsqhzjkk='0'"><span :class="{active: info.sfsqhzjkk==='0'}"><i></i></span> <span>否
+                        No</span></div>
             </div>
         </div>
     </li>
-    <li>
+    <li v-if="info.sfsqhzjkk==1">
         <div name="sqhzjkkys" class="radio"><span>今日申领校区所在地健康码的颜色？What's the color of today's health code？<i
                     class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class="active"><i></i></span> <span>绿码 Green code</span></div>
-                <div><span class=""><i></i></span> <span>红码 Red code</span></div>
-                <div><span class=""><i></i></span> <span>黄码 Yellow code</span></div>
-                <div><span class=""><i></i></span> <span>橙码 Orange code</span></div>
+                <div @click="info.sqhzjkkys=1"><span :class="{active: info.sqhzjkkys==1}"><i></i></span> <span>绿码 Green
+                        code</span></div>
+                <div @click="info.sqhzjkkys=2"><span :class="{active: info.sqhzjkkys==2}"><i></i></span> <span>红码 Red
+                        code</span></div>
+                <div @click="info.sqhzjkkys=3"><span :class="{active: info.sqhzjkkys==3}"><i></i></span> <span>黄码 Yellow
+                        code</span></div>
+                <div @click="info.sqhzjkkys=4"><span :class="{active: info.sqhzjkkys==4}"><i></i></span> <span>橙码 Orange
+                        code</span></div>
+
             </div>
         </div>
     </li>
+
+
     <li>
         <div name="sfzx" class="radio"><span>今日是否在校？ Are you on campus today?<i
                     class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class="active"><i></i></span> <span>是 Yes</span></div>
-                <div><span class=""><i></i></span> <span>否 No</span></div>
+                <div @click="setSfzx('1')"><span :class="{active: info.sfzx==='1'}"><i></i></span> <span>是 Yes</span>
+                </div>
+                <div @click="setSfzx('0')"><span :class="{active: info.sfzx==='0'}"><i></i></span> <span>否 No</span>
+                </div>
             </div>
         </div>
     </li>
-    <!---->
+
+    <li v-if="showFxyy" style="display: none;">
+        <div class="multiText"><span>返校原因<i class="icon iconfont icon-shuoming"></i></span>
+            <div><textarea v-model="info.fxyy" name="fxyy" rows="" cols="" placeholder=""></textarea></div>
+        </div>
+    </li>
+
     <li>
         <div name="sfzgn" class="radio"><span>所在地点 Your Location<i
                     class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class="active"><i></i></span> <span>境内 in Chinese Mainland</span></div>
-                <div><span class=""><i></i></span> <span>境外 outside Chinese Mainland</span></div>
+                <div @click="setSfzgn(1)"><span :class="{active: sfzgn==1}"><i></i></span> <span>境内 in Chinese
+                        Mainland</span></div>
+                <div @click="setSfzgn(0)"><span :class="{active: sfzgn==0}"><i></i></span> <span>境外 outside Chinese
+                        Mainland</span></div>
             </div>
         </div>
     </li>
-    <li name="dwszgj" style="display: none;">
-        <div class="text"><span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access
-                function on your mobile phone and allow App to access your location)<i
-                    class="icon iconfont icon-shuoming"></i></span> <input name="szgjcs" readonly="readonly" type="text"
-                placeholder="点击获取地理位置(Click to get your location)"></div>
+    <li v-show="!ipCtrl1 && sfzgn == 0" name="dwszgj">
+        <div class="text" @click="mapInit()">
+            <span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access function on your
+                mobile phone and allow App to access your location)<i class="icon iconfont icon-shuoming"></i></span>
+            <input name="szgjcs" v-model="info.szgjcs" readonly type="text"
+                placeholder="点击获取地理位置(Click to get your location)">
+        </div>
     </li>
-    <li style="display: none;">
+    <li v-show="ipCtrl1 && sfzgn == 0">
         <div class="text">
-            <div class="hcqbtn-wrap"><select name="szgj" id="szgj" class="hcqbtn select2-hidden-accessible"
-                    tabindex="-1" aria-hidden="true">
+            <div class="hcqbtn-wrap">
+                <select class="hcqbtn" name="szgj" id="szgj">
                     <option value="">请选择所在地区/国家</option>
-                    <option value="阿富汗">阿富汗 AFG</option>
-                    <option value="阿尔巴尼亚">阿尔巴尼亚 ALB</option>
-                    <option value="南极洲">南极洲 ATA</option>
-                    <option value="阿尔及利亚">阿尔及利亚 DZA</option>
-                    <option value="美属萨摩亚">美属萨摩亚 ASM</option>
-                    <option value="安道尔">安道尔 AND</option>
-                    <option value="安哥拉">安哥拉 AGO</option>
-                    <option value="安提瓜和巴布达">安提瓜和巴布达 ATG</option>
-                    <option value="阿塞拜疆">阿塞拜疆 AZE</option>
-                    <option value="阿根廷">阿根廷 ARG</option>
-                    <option value="澳大利亚">澳大利亚 AUS</option>
-                    <option value="奥地利">奥地利 AUT</option>
-                    <option value="巴哈马">巴哈马 BHS</option>
-                    <option value="巴林">巴林 BHR</option>
-                    <option value="孟加拉国">孟加拉国 BGD</option>
-                    <option value="亚美尼亚">亚美尼亚 ARM</option>
-                    <option value="巴巴多斯">巴巴多斯 BRB</option>
-                    <option value="比利时">比利时 BEL</option>
-                    <option value="百慕大">百慕大 BMU</option>
-                    <option value="不丹">不丹 BTN</option>
-                    <option value="玻利维亚">玻利维亚 BOL</option>
-                    <option value="波黑">波黑 BIH</option>
-                    <option value="博茨瓦纳">博茨瓦纳 BWA</option>
-                    <option value="布维岛">布维岛 BVT</option>
-                    <option value="巴西">巴西 BRA</option>
-                    <option value="伯利兹">伯利兹 BLZ</option>
-                    <option value="英属印度洋领地">英属印度洋领地 IOT</option>
-                    <option value="所罗门群岛">所罗门群岛 SLB</option>
-                    <option value="英属维尔京群岛">英属维尔京群岛 VGB</option>
-                    <option value="文莱">文莱 BRN</option>
-                    <option value="保加利亚">保加利亚 BGR</option>
-                    <option value="缅甸">缅甸 MMR</option>
-                    <option value="布隆迪">布隆迪 BDI</option>
-                    <option value="白俄罗斯">白俄罗斯 BLR</option>
-                    <option value="柬埔寨">柬埔寨 KHM</option>
-                    <option value="喀麦隆">喀麦隆 CMR</option>
-                    <option value="加拿大">加拿大 CAN</option>
-                    <option value="佛得角">佛得角 CPV</option>
-                    <option value="开曼群岛">开曼群岛 CYM</option>
-                    <option value="中非">中非 CAF</option>
-                    <option value="斯里兰卡">斯里兰卡 LKA</option>
-                    <option value="乍得">乍得 TCD</option>
-                    <option value="智利">智利 CHL</option>
-                    <option value="台湾省">台湾省 TWN</option>
-                    <option value="圣诞岛">圣诞岛 CXR</option>
-                    <option value="科科斯（基林）群岛">科科斯（基林）群岛 CCK</option>
-                    <option value="哥伦比亚">哥伦比亚 COL</option>
-                    <option value="科摩罗">科摩罗 COM</option>
-                    <option value="马约特">马约特 MYT</option>
-                    <option value="刚果（布）">刚果（布） COG</option>
-                    <option value="刚果（金）">刚果（金） COD</option>
-                    <option value="库克群岛">库克群岛 COK</option>
-                    <option value="哥斯达黎加">哥斯达黎加 CRI</option>
-                    <option value="克罗地亚">克罗地亚 HRV</option>
-                    <option value="古巴">古巴 CUB</option>
-                    <option value="塞浦路斯">塞浦路斯 CYP</option>
-                    <option value="捷克">捷克 CZE</option>
-                    <option value="贝宁">贝宁 BEN</option>
-                    <option value="丹麦">丹麦 DNK</option>
-                    <option value="多米尼克">多米尼克 DMA</option>
-                    <option value="多米尼加">多米尼加 DOM</option>
-                    <option value="厄瓜多尔">厄瓜多尔 ECU</option>
-                    <option value="萨尔瓦多">萨尔瓦多 SLY</option>
-                    <option value="赤道几内亚">赤道几内亚 GNQ</option>
-                    <option value="埃塞俄比亚">埃塞俄比亚 ETH</option>
-                    <option value="厄立特里亚">厄立特里亚 ERI</option>
-                    <option value="爱沙尼亚">爱沙尼亚 EST</option>
-                    <option value="法罗群岛">法罗群岛 FRO</option>
-                    <option value="福克兰群岛（马尔维纳斯）">福克兰群岛（马尔维纳斯） FLK</option>
-                    <option value="南乔治亚岛和南桑德韦奇岛">南乔治亚岛和南桑德韦奇岛 SGS</option>
-                    <option value="斐济">斐济 FJI</option>
-                    <option value="芬兰">芬兰 FIN</option>
-                    <option value="法国">法国 FRA</option>
-                    <option value="法属圭亚那">法属圭亚那 GUF</option>
-                    <option value="法属波利尼西亚">法属波利尼西亚 PYE</option>
-                    <option value="法属南部领地">法属南部领地 ATF</option>
-                    <option value="吉布提">吉布提 DJI</option>
-                    <option value="加蓬">加蓬 GAB</option>
-                    <option value="格鲁吉亚">格鲁吉亚 GEO</option>
-                    <option value="冈比亚">冈比亚 GMB</option>
-                    <option value="巴基斯坦">巴基斯坦 PSE</option>
-                    <option value="德国">德国 DEU</option>
-                    <option value="加纳">加纳 GHA</option>
-                    <option value="直布罗陀">直布罗陀 GIB</option>
-                    <option value="基里巴斯">基里巴斯 KIR</option>
-                    <option value="希腊">希腊 GRC</option>
-                    <option value="格陵兰">格陵兰 GRL</option>
-                    <option value="格林纳达">格林纳达 GRD</option>
-                    <option value="瓜德罗普">瓜德罗普 GLP</option>
-                    <option value="关岛">关岛 GUM</option>
-                    <option value="危地马拉">危地马拉 GTM</option>
-                    <option value="几内亚">几内亚 GIN</option>
-                    <option value="圭亚那">圭亚那 GUY</option>
-                    <option value="海地">海地 HTI</option>
-                    <option value="赫德岛和麦克唐纳岛">赫德岛和麦克唐纳岛 HMD</option>
-                    <option value="梵蒂冈">梵蒂冈 VAT</option>
-                    <option value="洪都拉斯">洪都拉斯 HND</option>
-                    <option value="香港特别行政区">香港特别行政区 HKG</option>
-                    <option value="匈牙利">匈牙利 HUN</option>
-                    <option value="冰岛">冰岛 ISL</option>
-                    <option value="印度">印度 IND</option>
-                    <option value="印度尼西亚">印度尼西亚 IDN</option>
-                    <option value="伊朗">伊朗 IRN</option>
-                    <option value="伊拉克">伊拉克 IRQ</option>
-                    <option value="爱尔兰">爱尔兰 IRL</option>
-                    <option value="以色列">以色列 ISR</option>
-                    <option value="意大利">意大利 ITA</option>
-                    <option value="科特迪瓦">科特迪瓦 CIV</option>
-                    <option value="牙买加">牙买加 JAM</option>
-                    <option value="日本">日本 JPN</option>
-                    <option value="哈萨克斯坦">哈萨克斯坦 KAZ</option>
-                    <option value="约旦">约旦 JOR</option>
-                    <option value="肯尼亚">肯尼亚 KEN</option>
-                    <option value="朝鲜">朝鲜 PRK</option>
-                    <option value="韩国">韩国 KOR</option>
-                    <option value="科威特">科威特 KWT</option>
-                    <option value="吉尔吉斯斯坦">吉尔吉斯斯坦 KGZ</option>
-                    <option value="老挝">老挝 LAO</option>
-                    <option value="黎巴嫩">黎巴嫩 LBN</option>
-                    <option value="莱索托">莱索托 LSO</option>
-                    <option value="拉脱维亚">拉脱维亚 LVA</option>
-                    <option value="利比里亚">利比里亚 LBR</option>
-                    <option value="利比亚">利比亚 LBY</option>
-                    <option value="列支敦士登">列支敦士登 LIE</option>
-                    <option value="立陶宛">立陶宛 LTU</option>
-                    <option value="卢森堡">卢森堡 LUX</option>
-                    <option value="澳门特别行政区">澳门特别行政区 MA</option>
-                    <option value="马达加斯加">马达加斯加 MDG</option>
-                    <option value="马拉维">马拉维 MWI</option>
-                    <option value="马来西亚">马来西亚 MYS</option>
-                    <option value="马尔代夫">马尔代夫 MDV</option>
-                    <option value="马里">马里 MLI</option>
-                    <option value="马耳他">马耳他 MLT</option>
-                    <option value="马提尼克">马提尼克 MTQ</option>
-                    <option value="毛里塔尼亚">毛里塔尼亚 MRT</option>
-                    <option value="毛里求斯">毛里求斯 MUS</option>
-                    <option value="墨西哥">墨西哥 MEX</option>
-                    <option value="摩纳哥">摩纳哥 MCO</option>
-                    <option value="蒙古">蒙古 MNG</option>
-                    <option value="摩尔多瓦">摩尔多瓦 MDA</option>
-                    <option value="蒙特塞拉特">蒙特塞拉特 MSR</option>
-                    <option value="摩洛哥">摩洛哥 MAR</option>
-                    <option value="莫桑比亚">莫桑比亚 MOZ</option>
-                    <option value="阿曼">阿曼 OMN</option>
-                    <option value="纳米比亚">纳米比亚 NAM</option>
-                    <option value="瑙鲁">瑙鲁 NRU</option>
-                    <option value="尼泊尔">尼泊尔 NPL</option>
-                    <option value="荷兰">荷兰 NLD</option>
-                    <option value="荷属安的列斯">荷属安的列斯 ANT</option>
-                    <option value="阿鲁巴">阿鲁巴 ABW</option>
-                    <option value="新喀里多尼亚">新喀里多尼亚 NCL</option>
-                    <option value="瓦努阿图">瓦努阿图 VUT</option>
-                    <option value="新西兰">新西兰 NZL</option>
-                    <option value="尼加拉瓜">尼加拉瓜 NIC</option>
-                    <option value="尼日尔">尼日尔 NER</option>
-                    <option value="尼日利亚">尼日利亚 NGA</option>
-                    <option value="纽埃">纽埃 NIU</option>
-                    <option value="诺福克岛">诺福克岛 NFK</option>
-                    <option value="挪威">挪威 NOP</option>
-                    <option value="北马里亚纳">北马里亚纳 MNP</option>
-                    <option value="美国本土外小岛屿">美国本土外小岛屿 UMI</option>
-                    <option value="密克罗尼西亚联邦">密克罗尼西亚联邦 FSM</option>
-                    <option value="马绍尔群岛">马绍尔群岛 MHL</option>
-                    <option value="帕劳">帕劳 PLW</option>
-                    <option value="巴基斯坦">巴基斯坦 PAK</option>
-                    <option value="巴拿马">巴拿马 PAN</option>
-                    <option value="巴布亚新几内亚">巴布亚新几内亚 PNG</option>
-                    <option value="巴拉圭">巴拉圭 PRY</option>
-                    <option value="秘鲁">秘鲁 PER</option>
-                    <option value="菲律宾">菲律宾 PHL</option>
-                    <option value="皮特凯恩">皮特凯恩 PCN</option>
-                    <option value="波兰">波兰 POL</option>
-                    <option value="葡萄牙">葡萄牙 PRT</option>
-                    <option value="几内亚比绍">几内亚比绍 GNB</option>
-                    <option value="东帝汶">东帝汶 TMP</option>
-                    <option value="波多黎各">波多黎各 PRI</option>
-                    <option value="卡塔尔">卡塔尔 QAT</option>
-                    <option value="留尼汪">留尼汪 REU</option>
-                    <option value="罗马尼亚">罗马尼亚 ROM</option>
-                    <option value="俄罗斯联邦">俄罗斯联邦 RUS</option>
-                    <option value="卢旺达">卢旺达 RWA</option>
-                    <option value="圣赫勒拿">圣赫勒拿 SHN</option>
-                    <option value="圣基茨和尼维斯">圣基茨和尼维斯 KNA</option>
-                    <option value="安圭拉">安圭拉 AIA</option>
-                    <option value="圣卢西亚">圣卢西亚 LCA</option>
-                    <option value="圣皮埃尔和密克隆">圣皮埃尔和密克隆 SPM</option>
-                    <option value="圣文森特和格林纳丁斯">圣文森特和格林纳丁斯 VCT</option>
-                    <option value="圣马力诺">圣马力诺 SMR</option>
-                    <option value="圣多美和普林西比">圣多美和普林西比 STP</option>
-                    <option value="沙特阿拉伯">沙特阿拉伯 SAU</option>
-                    <option value="塞内加尔">塞内加尔 SEN</option>
-                    <option value="塞舌尔">塞舌尔 SYC</option>
-                    <option value="塞拉利昂">塞拉利昂 SLE</option>
-                    <option value="新加坡">新加坡 SGP</option>
-                    <option value="斯洛伐克">斯洛伐克 SVK</option>
-                    <option value="越南">越南 VNM</option>
-                    <option value="斯洛文尼亚">斯洛文尼亚 SVN</option>
-                    <option value="索马里">索马里 SOM</option>
-                    <option value="南非">南非 ZA</option>
-                    <option value="津巴布韦">津巴布韦 ZWE</option>
-                    <option value="西班牙">西班牙 ESP</option>
-                    <option value="西撒哈拉">西撒哈拉 ESH</option>
-                    <option value="苏丹">苏丹 SDN</option>
-                    <option value="苏里南">苏里南 SUR</option>
-                    <option value="斯瓦尔巴岛和扬马延岛">斯瓦尔巴岛和扬马延岛 SJM</option>
-                    <option value="斯威士兰">斯威士兰 SWZ</option>
-                    <option value="瑞典">瑞典 SWE</option>
-                    <option value="瑞士">瑞士 CHE</option>
-                    <option value="叙利亚">叙利亚 SYR</option>
-                    <option value="塔吉克斯坦">塔吉克斯坦 TJK</option>
-                    <option value="泰国">泰国 THA</option>
-                    <option value="多哥">多哥 TGO</option>
-                    <option value="托克劳">托克劳 TKL</option>
-                    <option value="汤加">汤加 TON</option>
-                    <option value="特立尼达和多巴哥">特立尼达和多巴哥 TTO</option>
-                    <option value="阿联酋">阿联酋 ARE</option>
-                    <option value="突尼斯">突尼斯 TUN</option>
-                    <option value="土耳其">土耳其 TUR</option>
-                    <option value="土库曼斯坦">土库曼斯坦 TKM</option>
-                    <option value="特克斯和凯科斯群岛">特克斯和凯科斯群岛 TCA</option>
-                    <option value="图瓦卢">图瓦卢 TUV</option>
-                    <option value="乌干达">乌干达 UGA</option>
-                    <option value="乌克兰">乌克兰 UKR</option>
-                    <option value="马其顿">马其顿 MKD</option>
-                    <option value="埃及">埃及 EGY</option>
-                    <option value="英国">英国 GBR</option>
-                    <option value="坦桑尼亚">坦桑尼亚 TZA</option>
-                    <option value="美国">美国 USA</option>
-                    <option value="美属维尔京群岛">美属维尔京群岛 VIR</option>
-                    <option value="布基纳法索">布基纳法索 BFA</option>
-                    <option value="乌拉圭">乌拉圭 URY</option>
-                    <option value="乌兹别克斯坦">乌兹别克斯坦 UZB</option>
-                    <option value="委内瑞拉">委内瑞拉 VEN</option>
-                    <option value="瓦利斯和富图纳">瓦利斯和富图纳 WLF</option>
-                    <option value="萨摩亚">萨摩亚 WSM</option>
-                    <option value="也门">也门 YEM</option>
-                    <option value="南斯拉夫">南斯拉夫 YUG</option>
-                    <option value="赞比亚">赞比亚 ZMB</option>
-                </select><span class="select2 select2-container select2-container--default" dir="ltr"
-                    style="width: 100%;"><span class="selection"><span
-                            class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
-                            aria-expanded="false" tabindex="0" aria-labelledby="select2-szgj-container"><span
-                                class="select2-selection__rendered" id="select2-szgj-container"
-                                title="请选择所在地区/国家">请选择所在地区/国家</span><span class="select2-selection__arrow"
-                                role="presentation"><b role="presentation"></b></span></span></span><span
-                        class="dropdown-wrapper" aria-hidden="true"></span></span> <input type="text"
-                    placeholder="所在城市 City" name="gwszgzcs" class="hcqbtn"></div>
-        </div>
-    </li>
-    <li>
-        <div name="area" class="text" style="cursor: pointer;"><span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location
-                (Please turn on the location access function on your mobile phone and allow App to access your
-                location)<i class="icon iconfont icon-shuoming"></i></span> <input readonly="readonly" type="text"
-                placeholder="点击获取地理位置 Click to get geographic location"></div>
-    </li>
-    <li name="ip" style="display: none;">
-        <div class="text">
-            <div class="hcqbtn-wrap"><select class="hcqbtn hcqbtn-danger">
-                    <option value="">请选择</option>
-                    <option value="北京市">北京市</option>
-                    <option value="天津市">天津市</option>
-                    <option value="上海市">上海市</option>
-                    <option value="重庆市">重庆市</option>
-                    <option value="河北省">河北省</option>
-                    <option value="山西省">山西省</option>
-                    <option value="内蒙古自治区">内蒙古自治区</option>
-                    <option value="辽宁省">辽宁省</option>
-                    <option value="吉林省">吉林省</option>
-                    <option value="黑龙江省">黑龙江省</option>
-                    <option value="江苏省">江苏省</option>
-                    <option value="浙江省">浙江省</option>
-                    <option value="安徽省">安徽省</option>
-                    <option value="福建省">福建省</option>
-                    <option value="江西省">江西省</option>
-                    <option value="山东省">山东省</option>
-                    <option value="河南省">河南省</option>
-                    <option value="湖北省">湖北省</option>
-                    <option value="湖南省">湖南省</option>
-                    <option value="广东省">广东省</option>
-                    <option value="广西壮族自治区">广西壮族自治区</option>
-                    <option value="海南省">海南省</option>
-                    <option value="四川省">四川省</option>
-                    <option value="贵州省">贵州省</option>
-                    <option value="云南省">云南省</option>
-                    <option value="西藏自治区">西藏自治区</option>
-                    <option value="陕西省">陕西省</option>
-                    <option value="甘肃省">甘肃省</option>
-                    <option value="青海省">青海省</option>
-                    <option value="宁夏回族自治区">宁夏回族自治区</option>
-                    <option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
-                </select> <select class="hcqbtn hcqbtn-warning">
-                    <option value="">请选择</option>
+                    <option v-for='p in country' :value="p.name">{{p.name}} {{p.ename}}</option>
                 </select>
-                <!---->
+                <input v-model="info.gwszgzcs" type="text" placeholder="所在城市 City" class="hcqbtn" name="gwszgzcs">
+
             </div>
         </div>
     </li>
-    <!---->
+    <li v-show="!ipCtrl && sfzgn == 1">
+        <div name="area" class="text" style="cursor: pointer" @click="getLocation()">
+            <span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access function on your
+                mobile phone and allow App to access your location)<i class="icon iconfont icon-shuoming"></i></span>
+            <input v-model="info.area" readonly type="text" placeholder="点击获取地理位置 Click to get geographic location">
+        </div>
+    </li>
+
+    <li v-show="false && ipCtrl && sfzgn == 1" name="ip">
+        <div class="text">
+            <div class="hcqbtn-wrap">
+                <select class="hcqbtn hcqbtn-danger" v-model='jtszd.myprovice' @change="handleChangeCity()">
+                    <option value="">请选择</option>
+                    <option v-for='p in Allprovice' :value="p.name">{{p.name}}</option>
+                </select>
+
+                <select class="hcqbtn hcqbtn-warning" v-model='jtszd.mycity' @change="handleChangeArea()">
+                    <option value="">请选择</option>
+                    <option v-for='c in Allcity' :value="c.name">{{c.name}}</option>
+                </select>
+                <select class="hcqbtn hcqbtn-primary" v-model="jtszd.myarea" v-if="Allarea.length>0"
+                    @change="handleChange()">
+                    <option value="">请选择</option>
+                    <option v-for='a in Allarea' :value="a">{{a}}</option>
+                </select>
+            </div>
+        </div>
+    </li>
+    <li v-if="info.ismoved == 1">
+        <div name="bztcyy" class="radio"><span>当前地点与上次不在同一城市，原因如下 Current location is different from last time，why？<i
+                    class="icon iconfont icon-shuoming"></i><em></em></span>
+            <div>
+                <div @click="info.bztcyy=2"><span :class="{active: info.bztcyy==2}"><i></i></span> <span>探亲 Visit
+                        relatives</span></div>
+                <div @click="info.bztcyy=3"><span :class="{active: info.bztcyy==3}"><i></i></span> <span>旅游
+                        Travel</span></div>
+                <div @click="info.bztcyy=4"><span :class="{active: info.bztcyy==4}"><i></i></span> <span>回家 Return
+                        home</span></div>
+                <div @click="info.bztcyy=5"><span :class="{active: info.bztcyy==5}"><i></i></span> <span>返校 Return to
+                        school</span></div>
+                <div @click="info.bztcyy=6"><span :class="{active: info.bztcyy==6}"><i></i></span> <span>出差 On a
+                        business trip</span></div>
+                <div @click="info.bztcyy=1"><span :class="{active: info.bztcyy==1}"><i></i></span> <span>其他
+                        Others</span></div>
+            </div>
+        </div>
+    </li>
     <li style="display: none;">
         <div name="jrdqtlqk" class="radio"><span>你是否从以下地区返回浙江（含经停）? Did you return to Zhejiang from the following areas
                 (including stopovers)？<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>7月10日后从乌鲁木齐返回 Urumchi after July 10th</span></div>
-                <div><span class=""><i></i></span> <span>8月15日后从汕尾市陆丰市返回Lufeng after Augest 15th</span></div>
-                <div><span class=""><i></i></span> <span>否 None of the above</span></div>
+                <!--                                    <div @click="getdqtlqk('1')"><span :class="{active: info.jrdqtlqk.indexOf('1')>-1}"><i></i></span> <span>武汉 Wuhan</span></div>-->
+                <!--                                    <div @click="getdqtlqk('2')"><span :class="{active: info.jrdqtlqk.indexOf('2')>-1}"><i></i></span> <span>湖北（除武汉） Hubei (non-Wuhan regions)</span></div>-->
+                <!--                                    <div @click="getdqtlqk('3')"><span :class="{active: info.jrdqtlqk.indexOf('3')>-1}"><i></i></span> <span>哈尔滨市 Harbin</span></div>-->
+                <!--                                    <div @click="getdqtlqk('4')"><span :class="{active: info.jrdqtlqk.indexOf('4')>-1}"><i></i></span> <span>绥芬河市 Suifenhe</span></div>-->
+                <!--                                    <div @click="getdqtlqk('5')"><span :class="{active: info.jrdqtlqk.indexOf('5')>-1}"><i></i></span> <span>满洲里市 Manzhouli</span></div>-->
+                <!--                                    <div @click="getdqtlqk('6')"><span :class="{active: info.jrdqtlqk.indexOf('6')>-1}"><i></i></span> <span>广州市 Guangzhou</span></div>-->
+                <!--                                    <div @click="getdqtlqk('7')"><span :class="{active: info.jrdqtlqk.indexOf('7')>-1}"><i></i></span> <span>深圳市 Shenzhen</span></div>-->
+                <!--                                    <div @click="getdqtlqk('8')"><span :class="{active: info.jrdqtlqk.indexOf('8')>-1}"><i></i></span> <span>揭阳市 Jieyang</span></div>-->
+                <!--                                    <div @click="getdqtlqk('9')"><span :class="{active: info.jrdqtlqk.indexOf('9')>-1}"><i></i></span> <span>吉林市 Jilin</span></div>-->
+                <!--                                    <div @click="getdqtlqk('10')"><span :class="{active: info.jrdqtlqk.indexOf('10')>-1}"><i></i></span> <span>北京市 Beijing</span></div>-->
+                <div @click="getdqtlqk('11')"><span :class="{active: info.jrdqtlqk.indexOf('11')>-1}"><i></i></span>
+                    <span>7月10日后从乌鲁木齐返回 Urumchi after July 10th</span></div>
+                <!--                                    <div @click="getdqtlqk('12')"><span :class="{active: info.jrdqtlqk.indexOf('12')>-1}"><i></i></span> <span>7月15日后从大连返回 Dalian after July 15th</span></div>-->
+                <div @click="getdqtlqk('13')"><span :class="{active: info.jrdqtlqk.indexOf('13')>-1}"><i></i></span>
+                    <span>8月15日后从汕尾市陆丰市返回Lufeng after Augest 15th</span></div>
+                <div @click="getdqtlqk('0')"><span :class="{active: info.jrdqtlqk.indexOf('0')>-1}"><i></i></span>
+                    <span>否 None of the above</span></div>
             </div>
         </div>
     </li>
-    <li>
+    <li v-if="sfzgn== 1">
         <div name="sfymqjczrj" class="radio"><span>本人家庭成员(包括其他密切接触人员)是否有近14日入境或近14日拟入境的情况？Have your family members
                 (including other close contact persons）entered Chinese Mainland over the past 14 days or plan to enter
                 Chinese Mainland in 14 days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>是 Yes，请及时向所在单位报告实际情况。please contact your college/school
-                        immediately</span></div>
-                <div><span class="active"><i></i></span> <span>否 No</span></div>
+                <div @click="info.sfymqjczrj=1"><span :class="{active: info.sfymqjczrj==1}"><i></i></span> <span>是
+                        Yes，请及时向所在单位报告实际情况。please contact your college/school immediately</span></div>
+                <div @click="info.sfymqjczrj=0"><span
+                        :class="{active: (info.sfymqjczrj===0 || info.sfymqjczrj === '0')}"><i></i></span> <span>否
+                        No</span></div>
             </div>
         </div>
     </li>
-    <li style="display: none;">
+    <li v-show="sfzgn == 0">
         <div class="multiText"><span>近14日到访过的国家/地区 Countries you’ve visited over the past 14 days<i
                     class="icon iconfont icon-shuoming"></i></span>
-            <div><textarea name="zjdfgj" rows="" cols=""
+            <div><textarea v-model="info.zjdfgj" name="zjdfgj" rows="" cols=""
                     placeholder="多个用逗号隔开（如德国，荷兰）separate by commas if more than one country (eg: Germany, Netherlands)"></textarea>
             </div>
         </div>
     </li>
-    <li style="display: none;">
+    <li v-show="sfzgn == 0">
         <div name="sfyrjjh" class="radio"><span>未来14天内是否有入境计划? Do you have plan to enter Chinese Mainland in the next 14
                 days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>是 Yes</span></div>
-                <div><span class="active"><i></i></span> <span>否 No</span></div>
+                <div @click="info.sfyrjjh=1"><span :class="{active: info.sfyrjjh==1}"><i></i></span> <span>是 Yes</span>
+                </div>
+                <div @click="info.sfyrjjh=0"><span :class="{active: info.sfyrjjh==0}"><i></i></span> <span>否 No</span>
+                </div>
             </div>
         </div>
     </li>
-    <li style="display: none;">
-        <div name="cfgj" class="text"><span>出发国家或地区 Departure country or region?<i
-                    class="icon iconfont icon-shuoming"></i></span>
-            <div><select name="cfgj" id="cfgj" class="hcqbtn select2-hidden-accessible"
-                    style="display: block; width: 100%;" tabindex="-1" aria-hidden="true">
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+        <div name="cfgj" class="text">
+            <span>出发国家或地区 Departure country or region?<i class="icon iconfont icon-shuoming"></i></span>
+            <div>
+                <select class="hcqbtn" v-model='info.cfgj' name="cfgj" id="cfgj" style="display: block;width: 100%;">
                     <option value="">请选择国家或地区 Scroll down to select country or region</option>
-                    <option value="阿富汗">阿富汗 AFG</option>
-                    <option value="阿尔巴尼亚">阿尔巴尼亚 ALB</option>
-                    <option value="南极洲">南极洲 ATA</option>
-                    <option value="阿尔及利亚">阿尔及利亚 DZA</option>
-                    <option value="美属萨摩亚">美属萨摩亚 ASM</option>
-                    <option value="安道尔">安道尔 AND</option>
-                    <option value="安哥拉">安哥拉 AGO</option>
-                    <option value="安提瓜和巴布达">安提瓜和巴布达 ATG</option>
-                    <option value="阿塞拜疆">阿塞拜疆 AZE</option>
-                    <option value="阿根廷">阿根廷 ARG</option>
-                    <option value="澳大利亚">澳大利亚 AUS</option>
-                    <option value="奥地利">奥地利 AUT</option>
-                    <option value="巴哈马">巴哈马 BHS</option>
-                    <option value="巴林">巴林 BHR</option>
-                    <option value="孟加拉国">孟加拉国 BGD</option>
-                    <option value="亚美尼亚">亚美尼亚 ARM</option>
-                    <option value="巴巴多斯">巴巴多斯 BRB</option>
-                    <option value="比利时">比利时 BEL</option>
-                    <option value="百慕大">百慕大 BMU</option>
-                    <option value="不丹">不丹 BTN</option>
-                    <option value="玻利维亚">玻利维亚 BOL</option>
-                    <option value="波黑">波黑 BIH</option>
-                    <option value="博茨瓦纳">博茨瓦纳 BWA</option>
-                    <option value="布维岛">布维岛 BVT</option>
-                    <option value="巴西">巴西 BRA</option>
-                    <option value="伯利兹">伯利兹 BLZ</option>
-                    <option value="英属印度洋领地">英属印度洋领地 IOT</option>
-                    <option value="所罗门群岛">所罗门群岛 SLB</option>
-                    <option value="英属维尔京群岛">英属维尔京群岛 VGB</option>
-                    <option value="文莱">文莱 BRN</option>
-                    <option value="保加利亚">保加利亚 BGR</option>
-                    <option value="缅甸">缅甸 MMR</option>
-                    <option value="布隆迪">布隆迪 BDI</option>
-                    <option value="白俄罗斯">白俄罗斯 BLR</option>
-                    <option value="柬埔寨">柬埔寨 KHM</option>
-                    <option value="喀麦隆">喀麦隆 CMR</option>
-                    <option value="加拿大">加拿大 CAN</option>
-                    <option value="佛得角">佛得角 CPV</option>
-                    <option value="开曼群岛">开曼群岛 CYM</option>
-                    <option value="中非">中非 CAF</option>
-                    <option value="斯里兰卡">斯里兰卡 LKA</option>
-                    <option value="乍得">乍得 TCD</option>
-                    <option value="智利">智利 CHL</option>
-                    <option value="台湾省">台湾省 TWN</option>
-                    <option value="圣诞岛">圣诞岛 CXR</option>
-                    <option value="科科斯（基林）群岛">科科斯（基林）群岛 CCK</option>
-                    <option value="哥伦比亚">哥伦比亚 COL</option>
-                    <option value="科摩罗">科摩罗 COM</option>
-                    <option value="马约特">马约特 MYT</option>
-                    <option value="刚果（布）">刚果（布） COG</option>
-                    <option value="刚果（金）">刚果（金） COD</option>
-                    <option value="库克群岛">库克群岛 COK</option>
-                    <option value="哥斯达黎加">哥斯达黎加 CRI</option>
-                    <option value="克罗地亚">克罗地亚 HRV</option>
-                    <option value="古巴">古巴 CUB</option>
-                    <option value="塞浦路斯">塞浦路斯 CYP</option>
-                    <option value="捷克">捷克 CZE</option>
-                    <option value="贝宁">贝宁 BEN</option>
-                    <option value="丹麦">丹麦 DNK</option>
-                    <option value="多米尼克">多米尼克 DMA</option>
-                    <option value="多米尼加">多米尼加 DOM</option>
-                    <option value="厄瓜多尔">厄瓜多尔 ECU</option>
-                    <option value="萨尔瓦多">萨尔瓦多 SLY</option>
-                    <option value="赤道几内亚">赤道几内亚 GNQ</option>
-                    <option value="埃塞俄比亚">埃塞俄比亚 ETH</option>
-                    <option value="厄立特里亚">厄立特里亚 ERI</option>
-                    <option value="爱沙尼亚">爱沙尼亚 EST</option>
-                    <option value="法罗群岛">法罗群岛 FRO</option>
-                    <option value="福克兰群岛（马尔维纳斯）">福克兰群岛（马尔维纳斯） FLK</option>
-                    <option value="南乔治亚岛和南桑德韦奇岛">南乔治亚岛和南桑德韦奇岛 SGS</option>
-                    <option value="斐济">斐济 FJI</option>
-                    <option value="芬兰">芬兰 FIN</option>
-                    <option value="法国">法国 FRA</option>
-                    <option value="法属圭亚那">法属圭亚那 GUF</option>
-                    <option value="法属波利尼西亚">法属波利尼西亚 PYE</option>
-                    <option value="法属南部领地">法属南部领地 ATF</option>
-                    <option value="吉布提">吉布提 DJI</option>
-                    <option value="加蓬">加蓬 GAB</option>
-                    <option value="格鲁吉亚">格鲁吉亚 GEO</option>
-                    <option value="冈比亚">冈比亚 GMB</option>
-                    <option value="巴基斯坦">巴基斯坦 PSE</option>
-                    <option value="德国">德国 DEU</option>
-                    <option value="加纳">加纳 GHA</option>
-                    <option value="直布罗陀">直布罗陀 GIB</option>
-                    <option value="基里巴斯">基里巴斯 KIR</option>
-                    <option value="希腊">希腊 GRC</option>
-                    <option value="格陵兰">格陵兰 GRL</option>
-                    <option value="格林纳达">格林纳达 GRD</option>
-                    <option value="瓜德罗普">瓜德罗普 GLP</option>
-                    <option value="关岛">关岛 GUM</option>
-                    <option value="危地马拉">危地马拉 GTM</option>
-                    <option value="几内亚">几内亚 GIN</option>
-                    <option value="圭亚那">圭亚那 GUY</option>
-                    <option value="海地">海地 HTI</option>
-                    <option value="赫德岛和麦克唐纳岛">赫德岛和麦克唐纳岛 HMD</option>
-                    <option value="梵蒂冈">梵蒂冈 VAT</option>
-                    <option value="洪都拉斯">洪都拉斯 HND</option>
-                    <option value="香港特别行政区">香港特别行政区 HKG</option>
-                    <option value="匈牙利">匈牙利 HUN</option>
-                    <option value="冰岛">冰岛 ISL</option>
-                    <option value="印度">印度 IND</option>
-                    <option value="印度尼西亚">印度尼西亚 IDN</option>
-                    <option value="伊朗">伊朗 IRN</option>
-                    <option value="伊拉克">伊拉克 IRQ</option>
-                    <option value="爱尔兰">爱尔兰 IRL</option>
-                    <option value="以色列">以色列 ISR</option>
-                    <option value="意大利">意大利 ITA</option>
-                    <option value="科特迪瓦">科特迪瓦 CIV</option>
-                    <option value="牙买加">牙买加 JAM</option>
-                    <option value="日本">日本 JPN</option>
-                    <option value="哈萨克斯坦">哈萨克斯坦 KAZ</option>
-                    <option value="约旦">约旦 JOR</option>
-                    <option value="肯尼亚">肯尼亚 KEN</option>
-                    <option value="朝鲜">朝鲜 PRK</option>
-                    <option value="韩国">韩国 KOR</option>
-                    <option value="科威特">科威特 KWT</option>
-                    <option value="吉尔吉斯斯坦">吉尔吉斯斯坦 KGZ</option>
-                    <option value="老挝">老挝 LAO</option>
-                    <option value="黎巴嫩">黎巴嫩 LBN</option>
-                    <option value="莱索托">莱索托 LSO</option>
-                    <option value="拉脱维亚">拉脱维亚 LVA</option>
-                    <option value="利比里亚">利比里亚 LBR</option>
-                    <option value="利比亚">利比亚 LBY</option>
-                    <option value="列支敦士登">列支敦士登 LIE</option>
-                    <option value="立陶宛">立陶宛 LTU</option>
-                    <option value="卢森堡">卢森堡 LUX</option>
-                    <option value="澳门特别行政区">澳门特别行政区 MA</option>
-                    <option value="马达加斯加">马达加斯加 MDG</option>
-                    <option value="马拉维">马拉维 MWI</option>
-                    <option value="马来西亚">马来西亚 MYS</option>
-                    <option value="马尔代夫">马尔代夫 MDV</option>
-                    <option value="马里">马里 MLI</option>
-                    <option value="马耳他">马耳他 MLT</option>
-                    <option value="马提尼克">马提尼克 MTQ</option>
-                    <option value="毛里塔尼亚">毛里塔尼亚 MRT</option>
-                    <option value="毛里求斯">毛里求斯 MUS</option>
-                    <option value="墨西哥">墨西哥 MEX</option>
-                    <option value="摩纳哥">摩纳哥 MCO</option>
-                    <option value="蒙古">蒙古 MNG</option>
-                    <option value="摩尔多瓦">摩尔多瓦 MDA</option>
-                    <option value="蒙特塞拉特">蒙特塞拉特 MSR</option>
-                    <option value="摩洛哥">摩洛哥 MAR</option>
-                    <option value="莫桑比亚">莫桑比亚 MOZ</option>
-                    <option value="阿曼">阿曼 OMN</option>
-                    <option value="纳米比亚">纳米比亚 NAM</option>
-                    <option value="瑙鲁">瑙鲁 NRU</option>
-                    <option value="尼泊尔">尼泊尔 NPL</option>
-                    <option value="荷兰">荷兰 NLD</option>
-                    <option value="荷属安的列斯">荷属安的列斯 ANT</option>
-                    <option value="阿鲁巴">阿鲁巴 ABW</option>
-                    <option value="新喀里多尼亚">新喀里多尼亚 NCL</option>
-                    <option value="瓦努阿图">瓦努阿图 VUT</option>
-                    <option value="新西兰">新西兰 NZL</option>
-                    <option value="尼加拉瓜">尼加拉瓜 NIC</option>
-                    <option value="尼日尔">尼日尔 NER</option>
-                    <option value="尼日利亚">尼日利亚 NGA</option>
-                    <option value="纽埃">纽埃 NIU</option>
-                    <option value="诺福克岛">诺福克岛 NFK</option>
-                    <option value="挪威">挪威 NOP</option>
-                    <option value="北马里亚纳">北马里亚纳 MNP</option>
-                    <option value="美国本土外小岛屿">美国本土外小岛屿 UMI</option>
-                    <option value="密克罗尼西亚联邦">密克罗尼西亚联邦 FSM</option>
-                    <option value="马绍尔群岛">马绍尔群岛 MHL</option>
-                    <option value="帕劳">帕劳 PLW</option>
-                    <option value="巴基斯坦">巴基斯坦 PAK</option>
-                    <option value="巴拿马">巴拿马 PAN</option>
-                    <option value="巴布亚新几内亚">巴布亚新几内亚 PNG</option>
-                    <option value="巴拉圭">巴拉圭 PRY</option>
-                    <option value="秘鲁">秘鲁 PER</option>
-                    <option value="菲律宾">菲律宾 PHL</option>
-                    <option value="皮特凯恩">皮特凯恩 PCN</option>
-                    <option value="波兰">波兰 POL</option>
-                    <option value="葡萄牙">葡萄牙 PRT</option>
-                    <option value="几内亚比绍">几内亚比绍 GNB</option>
-                    <option value="东帝汶">东帝汶 TMP</option>
-                    <option value="波多黎各">波多黎各 PRI</option>
-                    <option value="卡塔尔">卡塔尔 QAT</option>
-                    <option value="留尼汪">留尼汪 REU</option>
-                    <option value="罗马尼亚">罗马尼亚 ROM</option>
-                    <option value="俄罗斯联邦">俄罗斯联邦 RUS</option>
-                    <option value="卢旺达">卢旺达 RWA</option>
-                    <option value="圣赫勒拿">圣赫勒拿 SHN</option>
-                    <option value="圣基茨和尼维斯">圣基茨和尼维斯 KNA</option>
-                    <option value="安圭拉">安圭拉 AIA</option>
-                    <option value="圣卢西亚">圣卢西亚 LCA</option>
-                    <option value="圣皮埃尔和密克隆">圣皮埃尔和密克隆 SPM</option>
-                    <option value="圣文森特和格林纳丁斯">圣文森特和格林纳丁斯 VCT</option>
-                    <option value="圣马力诺">圣马力诺 SMR</option>
-                    <option value="圣多美和普林西比">圣多美和普林西比 STP</option>
-                    <option value="沙特阿拉伯">沙特阿拉伯 SAU</option>
-                    <option value="塞内加尔">塞内加尔 SEN</option>
-                    <option value="塞舌尔">塞舌尔 SYC</option>
-                    <option value="塞拉利昂">塞拉利昂 SLE</option>
-                    <option value="新加坡">新加坡 SGP</option>
-                    <option value="斯洛伐克">斯洛伐克 SVK</option>
-                    <option value="越南">越南 VNM</option>
-                    <option value="斯洛文尼亚">斯洛文尼亚 SVN</option>
-                    <option value="索马里">索马里 SOM</option>
-                    <option value="南非">南非 ZA</option>
-                    <option value="津巴布韦">津巴布韦 ZWE</option>
-                    <option value="西班牙">西班牙 ESP</option>
-                    <option value="西撒哈拉">西撒哈拉 ESH</option>
-                    <option value="苏丹">苏丹 SDN</option>
-                    <option value="苏里南">苏里南 SUR</option>
-                    <option value="斯瓦尔巴岛和扬马延岛">斯瓦尔巴岛和扬马延岛 SJM</option>
-                    <option value="斯威士兰">斯威士兰 SWZ</option>
-                    <option value="瑞典">瑞典 SWE</option>
-                    <option value="瑞士">瑞士 CHE</option>
-                    <option value="叙利亚">叙利亚 SYR</option>
-                    <option value="塔吉克斯坦">塔吉克斯坦 TJK</option>
-                    <option value="泰国">泰国 THA</option>
-                    <option value="多哥">多哥 TGO</option>
-                    <option value="托克劳">托克劳 TKL</option>
-                    <option value="汤加">汤加 TON</option>
-                    <option value="特立尼达和多巴哥">特立尼达和多巴哥 TTO</option>
-                    <option value="阿联酋">阿联酋 ARE</option>
-                    <option value="突尼斯">突尼斯 TUN</option>
-                    <option value="土耳其">土耳其 TUR</option>
-                    <option value="土库曼斯坦">土库曼斯坦 TKM</option>
-                    <option value="特克斯和凯科斯群岛">特克斯和凯科斯群岛 TCA</option>
-                    <option value="图瓦卢">图瓦卢 TUV</option>
-                    <option value="乌干达">乌干达 UGA</option>
-                    <option value="乌克兰">乌克兰 UKR</option>
-                    <option value="马其顿">马其顿 MKD</option>
-                    <option value="埃及">埃及 EGY</option>
-                    <option value="英国">英国 GBR</option>
-                    <option value="坦桑尼亚">坦桑尼亚 TZA</option>
-                    <option value="美国">美国 USA</option>
-                    <option value="美属维尔京群岛">美属维尔京群岛 VIR</option>
-                    <option value="布基纳法索">布基纳法索 BFA</option>
-                    <option value="乌拉圭">乌拉圭 URY</option>
-                    <option value="乌兹别克斯坦">乌兹别克斯坦 UZB</option>
-                    <option value="委内瑞拉">委内瑞拉 VEN</option>
-                    <option value="瓦利斯和富图纳">瓦利斯和富图纳 WLF</option>
-                    <option value="萨摩亚">萨摩亚 WSM</option>
-                    <option value="也门">也门 YEM</option>
-                    <option value="南斯拉夫">南斯拉夫 YUG</option>
-                    <option value="赞比亚">赞比亚 ZMB</option>
-                </select><span class="select2 select2-container select2-container--default" dir="ltr"
-                    style="width: 100%;"><span class="selection"><span
-                            class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
-                            aria-expanded="false" tabindex="0" aria-labelledby="select2-cfgj-container"><span
-                                class="select2-selection__rendered" id="select2-cfgj-container"
-                                title="请选择国家或地区 Scroll down to select country or region">请选择国家或地区 Scroll down to select
-                                country or region</span><span class="select2-selection__arrow" role="presentation"><b
-                                    role="presentation"></b></span></span></span><span class="dropdown-wrapper"
-                        aria-hidden="true"></span></span></div>
+                    <option v-for='p in country' :value="p.name">{{p.name}} {{p.ename}}</option>
+                </select>
+            </div>
         </div>
     </li>
-    <li style="display: none;">
+
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
         <div class="multiText"><span>途经国家/地区（直航填无）Transit Country/region? (Enter “no” if direct flights).<i
                     class="icon iconfont icon-shuoming"></i></span>
-            <div><textarea name="tjgj" rows="" cols=""
+            <div><textarea v-model="info.tjgj" name="tjgj" rows="" cols=""
                     placeholder="多个用逗号隔开（如德国，荷兰）separate by commas if more than one country (eg: Germany, Netherlands)"></textarea>
             </div>
         </div>
     </li>
-    <li style="display: none;">
-        <div class="text"><span>拟入境日期（北京时间） Planned date of arrival<i class="icon iconfont icon-shuoming"></i></span>
-            <input name="nrjrq" type="date" placeholder="">
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+        <div class="text">
+            <span>拟入境日期（北京时间） Planned date of arrival<i class="icon iconfont icon-shuoming"></i></span>
+            <input name="nrjrq" v-model="info.nrjrq" type="date" placeholder="">
         </div>
     </li>
-    <li style="display: none;">
-        <div class="text"><span>入境口岸 Port of Entry<i class="icon iconfont icon-shuoming"></i></span> <input name="rjka"
-                type="text" placeholder="输入入境口岸（城市） enter port of entry (city)"></div>
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+        <div class="text">
+            <span>入境口岸 Port of Entry<i class="icon iconfont icon-shuoming"></i></span>
+            <input name="rjka" v-model="info.rjka" type="text" placeholder="输入入境口岸（城市） enter port of entry (city)">
+        </div>
     </li>
-    <li style="display: none;">
-        <div name="jnmdd" class="text"><span>境内目的地 Destination in Chinese Mainland<i
-                    class="icon iconfont icon-shuoming"></i></span>
-            <div class="hcqbtn-wrap"><select class="hcqbtn hcqbtn-danger">
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+        <div name="jnmdd" class="text">
+            <span>境内目的地 Destination in Chinese Mainland<i class="icon iconfont icon-shuoming"></i></span>
+            <div class="hcqbtn-wrap">
+                <select class="hcqbtn hcqbtn-danger" v-model='info.jnmddsheng'
+                    @change="handleChangeCityt(info.jnmddsheng)">
                     <option value="">请选择</option>
-                    <option value="北京市">北京市</option>
-                    <option value="天津市">天津市</option>
-                    <option value="上海市">上海市</option>
-                    <option value="重庆市">重庆市</option>
-                    <option value="河北省">河北省</option>
-                    <option value="山西省">山西省</option>
-                    <option value="内蒙古自治区">内蒙古自治区</option>
-                    <option value="辽宁省">辽宁省</option>
-                    <option value="吉林省">吉林省</option>
-                    <option value="黑龙江省">黑龙江省</option>
-                    <option value="江苏省">江苏省</option>
-                    <option value="浙江省">浙江省</option>
-                    <option value="安徽省">安徽省</option>
-                    <option value="福建省">福建省</option>
-                    <option value="江西省">江西省</option>
-                    <option value="山东省">山东省</option>
-                    <option value="河南省">河南省</option>
-                    <option value="湖北省">湖北省</option>
-                    <option value="湖南省">湖南省</option>
-                    <option value="广东省">广东省</option>
-                    <option value="广西壮族自治区">广西壮族自治区</option>
-                    <option value="海南省">海南省</option>
-                    <option value="四川省">四川省</option>
-                    <option value="贵州省">贵州省</option>
-                    <option value="云南省">云南省</option>
-                    <option value="西藏自治区">西藏自治区</option>
-                    <option value="陕西省">陕西省</option>
-                    <option value="甘肃省">甘肃省</option>
-                    <option value="青海省">青海省</option>
-                    <option value="宁夏回族自治区">宁夏回族自治区</option>
-                    <option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
-                </select> <select class="hcqbtn hcqbtn-warning">
+                    <option v-for='p in Allprovice' :value="p.name">{{p.name}}</option>
+                </select>
+
+                <select class="hcqbtn hcqbtn-warning" v-model='info.jnmddshi'
+                    @change="handleChangeAreat(info.jnmddshi)">
                     <option value="">请选择</option>
-                </select> <select class="hcqbtn hcqbtn-primary" style="display: none;">
+                    <option v-for='c in Allcityt' :value="c.name">{{c.name}}</option>
+                </select>
+                <select class="hcqbtn hcqbtn-primary" v-model="info.jnmddqu" v-show="Allareat.length>0">
                     <option value="">请选择</option>
-                </select></div> <input name="jnmddxiangxi" type="text" placeholder="详细地址 Detailed address"
+                    <option v-for='a in Allareat' :value="a">{{a}}</option>
+                </select>
+
+            </div>
+            <input name="jnmddxiangxi" v-model="info.jnmddxiangxi" type="text" placeholder="详细地址 Detailed address"
                 class="hcqbtn-wrap-input">
         </div>
     </li>
-    <li style="display: none;">
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
         <div name="rjjtfs" class="radio"><span>入境交通方式 Mode of transport by which you enter Chinese Mainland<i
                     class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>飞机 By plane</span></div>
-                <div><span class=""><i></i></span> <span>火车 By train</span></div>
-                <div><span class="" style="position: relative; top: 0.2rem;"><i></i></span> <span
-                        style="position: relative; top: 0.1rem;">其他 Other</span> <input name="rjjtfs1" type="text"
-                        placeholder="请输入 Please enter" class="hcqbtn" style="margin-left: 0.2rem; width: 60%;"></div>
+                <div @click="info.rjjtfs=1"><span :class="{active: info.rjjtfs==1}"><i></i></span> <span>飞机 By
+                        plane</span></div>
+                <div @click="info.rjjtfs=2"><span :class="{active: info.rjjtfs == 2}"><i></i></span> <span>火车 By
+                        train</span></div>
+                <div @click="info.rjjtfs=4"><span :class="{active: info.rjjtfs == 4}"
+                        style="position: relative;top: 0.2rem;"><i></i></span> <span
+                        style="position: relative;top: 0.1rem;">其他 Other</span>
+                    <input name="rjjtfs1" type="text" v-model="info.rjjtfs1" placeholder="请输入 Please enter"
+                        class="hcqbtn" style="margin-left: 0.2rem;width: 60%;">
+                </div>
             </div>
         </div>
     </li>
-    <li style="display: none;">
-        <div class="text"><span>入境交通工具班次（航班号，火车车次） Details of the inbound transportation (Flight number, train number)<i
-                    class="icon iconfont icon-shuoming"></i></span> <input name="rjjtgjbc" type="text"
-                placeholder="多个用逗号隔开 Separate by commas if more than one"></div>
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+        <div class="text">
+            <span>入境交通工具班次（航班号，火车车次） Details of the inbound transportation (Flight number, train number)<i
+                    class="icon iconfont icon-shuoming"></i></span>
+            <input name="rjjtgjbc" v-model="info.rjjtgjbc" type="text"
+                placeholder="多个用逗号隔开 Separate by commas if more than one">
+        </div>
     </li>
-    <li style="display: none;">
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
         <div name="jnjtfs" class="radio"><span>境内交通方式 Mode of transport in Chinese Mainland <i
                     class="icon iconfont icon-shuoming"></i><em></em></span>
             <div>
-                <div><span class=""><i></i></span> <span>飞机 By plane</span></div>
-                <div><span class=""><i></i></span> <span>火车 By train</span></div>
-                <div><span class=""><i></i></span> <span>汽车 By coach</span></div>
-                <div><span class="" style="position: relative; top: 0.2rem;"><i></i></span> <span
-                        style="position: relative; top: 0.1rem;">其他 Other</span> <input name="jnjtfs1" type="text"
-                        placeholder="请输入 Please enter" class="hcqbtn" style="margin-left: 0.2rem; width: 60%;"></div>
+                <div @click="info.jnjtfs=1"><span :class="{active: info.jnjtfs==1}"><i></i></span> <span>飞机 By
+                        plane</span></div>
+                <div @click="info.jnjtfs=2"><span :class="{active: info.jnjtfs == 2}"><i></i></span> <span>火车 By
+                        train</span></div>
+                <div @click="info.jnjtfs=3"><span :class="{active: info.jnjtfs == 3}"><i></i></span> <span>汽车 By
+                        coach</span></div>
+                <div @click="info.jnjtfs=4"><span :class="{active: info.jnjtfs == 4}"
+                        style="position: relative;top: 0.2rem;"><i></i></span> <span
+                        style="position: relative;top: 0.1rem;">其他 Other</span>
+                    <input name="jnjtfs1" type="text" v-model="info.jnjtfs1" placeholder="请输入 Please enter"
+                        class="hcqbtn" style="margin-left: 0.2rem;width: 60%;">
+                </div>
             </div>
-        </div>
     </li>
-    <li style="display: none;">
-        <div class="text"><span>境内交通工具班次（航班号，火车车次，汽车牌照） Transportation details in Chinese Mainland (Flight number, train
-                number, license plate)<i class="icon iconfont icon-shuoming"></i></span> <input name="jnjtgjbc"
-                type="text" placeholder="多个用逗号隔开 Separate by commas if more than one"></div>
+    <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+        <div class="text">
+            <span>境内交通工具班次（航班号，火车车次，汽车牌照） Transportation details in Chinese Mainland (Flight number, train number,
+                license plate)<i class="icon iconfont icon-shuoming"></i></span>
+            <input name="jnjtgjbc" v-model="info.jnjtgjbc" type="text"
+                placeholder="多个用逗号隔开 Separate by commas if more than one">
+        </div>
     </li>
     <li>
         <div name="sfqrxxss" class="radio">
             <div>
-                <div><span class="active"><i></i></span> <span>本人承诺：<br>
-                        上述信息真实准确。如有变化，及时更新相关信息并报告所在单位。<br>
-                        本人已知晓并将遵守政府和学校相关规定，配合做好疫情防控工作。<br>
-                        I agree:<br>
+                <div @click="info.sfqrxxss = 1"><span :class="{active: info.sfqrxxss == 1}">
+                        <i></i></span> <span>本人承诺：</br>
+                        上述信息真实准确。如有变化，及时更新相关信息并报告所在单位。</br>
+                        本人已知晓并将遵守政府和学校相关规定，配合做好疫情防控工作。</br>
+                        I agree:</br>
                         The above information is true and accurate. In case of changes, I will keep my information
-                        updated and report in a timely manner.<br>
+                        updated and report in a timely manner.</br>
                         I have understood and will abide by the relevant government and University regulations to
-                        facilitate the prevention and control of COVID-19 epidemic.<br></span></div>
+                        facilitate the prevention and control of COVID-19 epidemic.</br>
+                    </span></div>
             </div>
         </div>
     </li>
