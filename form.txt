@@ -129,6 +129,23 @@
                                 <div><textarea v-model="info.remark" name="remark" rows="" cols="" placeholder=""></textarea></div>
                             </div>
                         </li>
+                        <li>
+        <div name="campus" class="radio"><span>所在校区 Campus<i class="icon iconfont icon-shuoming"></i><em></em></span>
+            <div>
+                <div><span class="active"><i></i></span> <span>紫金港校区</span></div>
+                <div><span class=""><i></i></span> <span>玉泉校区</span></div>
+                <div><span class=""><i></i></span> <span>西溪校区</span></div>
+                <div><span class=""><i></i></span> <span>华家池校区</span></div>
+                <div><span class=""><i></i></span> <span>之江校区</span></div>
+                <div><span class=""><i></i></span> <span>海宁校区</span></div>
+                <div><span class=""><i></i></span> <span>舟山校区</span></div>
+                <div><span class=""><i></i></span> <span>宁波校区</span></div>
+                <div><span class=""><i></i></span> <span>工程师学院</span></div>
+                <div><span class=""><i></i></span> <span>杭州国际科创中心</span></div>
+                <div><span class=""><i></i></span> <span>其他</span></div>
+            </div>
+        </div>
+    </li>                        
                          <li>
                                 <div name="sfsqhzjkk" class="radio"><span>是否已经申领校区所在地健康码？Have you got the health code of the city where the campus is located？<i class="icon iconfont icon-shuoming"></i><em></em></span>
                                     <div>
